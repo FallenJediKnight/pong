@@ -8,4 +8,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	
+	# Move down on player pressing down button
+	if (Input.is_action_pressed("down_player_2") and position.y + 64 < 480):
+		position.y += 100 * delta
+	
+	# Move up on player pressing up button
+	if (Input.is_action_pressed("up_player_2") and position.y > 0):
+		position.y -= 100 * delta
