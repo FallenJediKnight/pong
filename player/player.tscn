@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnb2q2war7nn6"]
+
+[ext_resource type="Texture2D" uid="uid://b6mo76eg4j3we" path="res://player/pong_paddle.png" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://b5m0ax4ysbf2d" path="res://player/player.gd" id="1_onrkg"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_onrkg")
+
+[node name="PongPaddle" type="Sprite2D" parent="."]
+position = Vector2(8, 32)
+scale = Vector2(0.4, 2)
+texture = ExtResource("1_4flbx")
