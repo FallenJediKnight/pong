@@ -1,25 +1,32 @@
 extends Node2D
 
 # Variables that need to be instantiated in child nodes
-var starting_position: Vector2
 var down_key: String
 var up_key: String
 
-# Constants
-const paddle_speed = 100
+var paddle_sprite: Sprite2D
+var paddle_texture: Texture
+var paddle_width
+var paddle_height
+
+const paddle_speed = 500
+const paddle_scale = Vector2(0.4, 2.0)
+const relative_x_constant = 0.1
+const relative_y_constant = 0.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	position = starting_position
-
+	paddle_sprite = $PongPaddle
+	paddle_texture = paddle_sprite.texture
+	paddle_height = paddle_texture.get_height()
+	paddle_width = paddle_texture.get_width()
+	paddle_sprite.scale = paddle_scale
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var arena_lower_boundary = get_viewport_rect().end.y
 	var arena_upper_boundary = get_viewport_rect().position.y
-	var paddle_sprite: Sprite2D = get_node("PongPaddle")
-	var paddle_texture: Texture = paddle_sprite.texture
-	var paddle_size = paddle_texture.get_height() * paddle_sprite.scale.y
+	var paddle_size = paddle_height * paddle_sprite.scale.y
 	
 	# Move down on player pressing s button
 	if (Input.is_action_pressed(down_key) and position.y + paddle_size < arena_lower_boundary):
