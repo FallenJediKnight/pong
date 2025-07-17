@@ -10,9 +10,12 @@ var paddle_width
 var paddle_height
 
 const paddle_speed = 500
-const paddle_scale = Vector2(0.4, 2.0)
-const relative_x_constant = 0.1
+const paddle_scale = Vector2(0.3, 2.0)
+const relative_x_constant = 0.05
 const relative_y_constant = 0.5
+
+var score: int: set = score_point
+signal score_updated_for_player
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,3 +38,7 @@ func _process(delta: float) -> void:
 	# Move up on player pressing w button
 	if (Input.is_action_pressed(up_key) and position.y > arena_upper_boundary):
 		position.y -= paddle_speed * delta
+
+func score_point(value: int) -> void:
+	score = value
+	score_updated_for_player.emit()
