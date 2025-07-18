@@ -1,12 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhxf34lnvtr11"]
+[gd_scene load_steps=4 format=3 uid="uid://bhxf34lnvtr11"]
 
 [ext_resource type="Script" uid="uid://62lp8asv1okm" path="res://player/player_2.gd" id="1_8xjnt"]
 [ext_resource type="Texture2D" uid="uid://d0wyxpw1ylmah" path="res://player/pong_paddle.bmp" id="2_c056v"]
 
-[node name="Player2" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c056v"]
+size = Vector2(16, 64)
+
+[node name="Player2" type="CharacterBody2D"]
 script = ExtResource("1_8xjnt")
 
 [node name="PongPaddle" type="Sprite2D" parent="."]
 position = Vector2(8, 32)
-scale = Vector2(0.4, 2)
+scale = Vector2(0.5, 2)
 texture = ExtResource("2_c056v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 32)
+shape = SubResource("RectangleShape2D_c056v")

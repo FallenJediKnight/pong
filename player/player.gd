@@ -1,18 +1,19 @@
-extends Node2D
+extends CharacterBody2D
 
 # Variables that need to be instantiated in child nodes
 var down_key: String
 var up_key: String
+var player_number: int
 
 var paddle_sprite: Sprite2D
 var paddle_texture: Texture
 var paddle_width
 var paddle_height
 
-const paddle_speed = 500
-const paddle_scale = Vector2(0.3, 2.0)
-const relative_x_constant = 0.05
-const relative_y_constant = 0.5
+const PADDLE_SPEED = 500
+const PADDLE_SCALE = Vector2(0.3, 2.0)
+const RELATIVE_X_CONSTANT = 0.05
+const RELATIVE_Y_CONSTANT = 0.5
 
 var score: int: set = score_point
 signal score_updated_for_player
@@ -23,7 +24,7 @@ func _ready() -> void:
 	paddle_texture = paddle_sprite.texture
 	paddle_height = paddle_texture.get_height()
 	paddle_width = paddle_texture.get_width()
-	paddle_sprite.scale = paddle_scale
+	paddle_sprite.scale = PADDLE_SCALE
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -31,13 +32,17 @@ func _process(delta: float) -> void:
 	var arena_upper_boundary = get_viewport_rect().position.y
 	var paddle_size = paddle_height * paddle_sprite.scale.y
 	
+	var direction = Vector2.ZERO
 	# Move down on player pressing s button
 	if (Input.is_action_pressed(down_key) and position.y + paddle_size < arena_lower_boundary):
-		position.y += paddle_speed * delta
+		direction = Vector2.DOWN
 	
 	# Move up on player pressing w button
 	if (Input.is_action_pressed(up_key) and position.y > arena_upper_boundary):
-		position.y -= paddle_speed * delta
+		direction = Vector2.UP
+	
+	velocity = direction * PADDLE_SPEED
+	move_and_slide()
 
 func score_point(value: int) -> void:
 	score = value

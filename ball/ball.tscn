@@ -1,11 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://md4slatlxgpy"]
+[gd_scene load_steps=5 format=3 uid="uid://md4slatlxgpy"]
 
 [ext_resource type="Script" uid="uid://kcqbi1b7g2y4" path="res://ball/ball.gd" id="1_pwunn"]
 [ext_resource type="Texture2D" uid="uid://bqhm3v5662smy" path="res://ball/pong_ball.bmp" id="2_pwunn"]
 
-[node name="Ball" type="Node2D"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pwunn"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pwunn"]
+radius = 8.0
+
+[node name="Ball" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_pwunn")
+linear_damp_mode = 1
+angular_damp_mode = 1
 script = ExtResource("1_pwunn")
 
 [node name="PongBall" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_pwunn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pwunn")
