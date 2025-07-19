@@ -1,21 +1,19 @@
 extends CharacterBody2D
 
-# Variables that need to be instantiated in child nodes
-var down_key: String
-var up_key: String
-var player_number: int
-
-var paddle_sprite: Sprite2D
-var paddle_texture: Texture
-var paddle_width
-var paddle_height
-
 const PADDLE_SPEED = 500
 const PADDLE_SCALE = Vector2(0.3, 2.0)
 const RELATIVE_X_CONSTANT = 0.05
 const RELATIVE_Y_CONSTANT = 0.5
 
+var down_key: String
+var up_key: String
+var player_number: int
+var paddle_sprite: Sprite2D
+var paddle_texture: Texture
+var paddle_width
+var paddle_height
 var score: int: set = score_point
+
 signal score_updated_for_player
 
 # Called when the node enters the scene tree for the first time.
