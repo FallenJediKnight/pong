@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bnb2q2war7nn6"]
 
-[ext_resource type="Script" uid="uid://b5m0ax4ysbf2d" path="res://player/player.gd" id="1_onrkg"]
-[ext_resource type="Texture2D" uid="uid://d0wyxpw1ylmah" path="res://player/pong_paddle.bmp" id="2_rkbax"]
+[ext_resource type="Script" uid="uid://b5m0ax4ysbf2d" path="res://scenes/player/player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://d0wyxpw1ylmah" path="res://graphics/pong_paddle.bmp" id="2_rkbax"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_onrkg")

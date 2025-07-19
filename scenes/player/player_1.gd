@@ -1,4 +1,4 @@
-extends "res://player/player.gd"
+extends "res://scenes/player/player.gd"
 
 @onready var ball = $"../Ball"
 

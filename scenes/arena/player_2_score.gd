@@ -1,6 +1,6 @@
-extends "res://player/player_score.gd"
+extends "res://scenes/arena/player_score.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	player = $"../Player1"
+	player = $"../Player2"
 	super._ready()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b5xu30sfk28hi"]
 
-[ext_resource type="Script" uid="uid://nclfsrqlbm03" path="res://player/player_1.gd" id="1_bxx23"]
-[ext_resource type="Texture2D" uid="uid://d0wyxpw1ylmah" path="res://player/pong_paddle.bmp" id="2_bib58"]
+[ext_resource type="Script" uid="uid://nclfsrqlbm03" path="res://scenes/player/player_1.gd" id="1_bxx23"]
+[ext_resource type="Texture2D" uid="uid://d0wyxpw1ylmah" path="res://graphics/pong_paddle.bmp" id="2_bib58"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bib58"]
 size = Vector2(16, 64)
