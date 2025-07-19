@@ -17,7 +17,7 @@ func _ready() -> void:
 	mid_point_x = get_viewport_rect().end.x * 0.5
 	viewport_start_y = get_viewport_rect().position.y
 	viewport_end_y = get_viewport_rect().end.y
-	global_position = Vector2(mid_point_x, randf())
+	global_position = Vector2(mid_point_x, randi_range(viewport_start_y, viewport_end_y))
 
 func _physics_process(delta: float) -> void:
 	move_and_collide(ball_direction * delta)
@@ -30,7 +30,10 @@ func _physics_process(delta: float) -> void:
 		reset_ball_position_and_direction()
 
 func get_random_starting_direction() -> Vector2:
-	return Vector2(randf_range(0.5, 1), randf_range(0.5, 1))
+	var x_direction = Vector2(0.5, 1)
+	if randi_range(0,1) == 1:
+		x_direction = Vector2(-1, -0.5)
+	return Vector2(randf_range(x_direction.x, x_direction.y), randf_range(-0.5, 0.5))
 
 func reset_ball_position_and_direction() -> void:
 	global_position = Vector2(mid_point_x, randi_range(viewport_start_y, viewport_end_y))
